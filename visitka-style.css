@@ -1,4 +1,4 @@
-/* Шрифт Orbitron подгружается из интернета; без сети сработает запасной */
+/* Шрифт Orbitron подгружается из интернета, без сети сработает запасной */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
  
 :root {
