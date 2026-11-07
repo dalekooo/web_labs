@@ -1,0 +1,242 @@
+/* Шрифт Orbitron подгружается из интернета; без сети сработает запасной */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+ 
+:root {
+    --bg-top: #12062b;
+    --bg-bottom: #2b0f54;
+    --panel: rgba(26, 11, 52, 0.82);
+    --pink: #ff2a6d;
+    --cyan: #05d9e8;
+    --violet: #b967ff;
+    --sun-1: #ffd166;
+    --sun-2: #ff2a6d;
+    --text: #f1e9ff;
+}
+ 
+* {
+    box-sizing: border-box;
+}
+ 
+body {
+    margin: 0;
+    padding: 30px 16px 120px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%) fixed;
+    color: var(--text);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 17px;
+    line-height: 1.6;
+}
+ 
+/* Закат */
+body::before {
+    content: "";
+    position: fixed;
+    left: 50%;
+    bottom: 22vh;
+    width: 260px;
+    height: 260px;
+    margin-left: -130px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--sun-1) 0%, var(--sun-2) 100%);
+    opacity: 0.45;
+    z-index: -2;
+    /* полоски на солнце */
+    -webkit-mask-image: repeating-linear-gradient(180deg, #000 0 14px, transparent 14px 18px);
+    mask-image: repeating-linear-gradient(180deg, #000 0 14px, transparent 14px 18px);
+}
+ 
+/* Пол-сетка */
+body::after {
+    content: "";
+    position: fixed;
+    left: -50%;
+    right: -50%;
+    bottom: 0;
+    height: 42vh;
+    background-image:
+        linear-gradient(rgba(185, 103, 255, 0.55) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 103, 255, 0.55) 1px, transparent 1px);
+    background-size: 48px 48px;
+    transform: perspective(300px) rotateX(58deg);
+    transform-origin: top center;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 60%);
+    mask-image: linear-gradient(to bottom, transparent, #000 60%);
+    z-index: -1;
+}
+ 
+/* Общий вид блоков */
+nav,
+section,
+footer {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+    background: var(--panel);
+    border: 2px solid var(--cyan);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(5, 217, 232, 0.45), inset 0 0 18px rgba(5, 217, 232, 0.08);
+}
+ 
+/* Заголовки */
+h1, h2, h3, h4 {
+    font-family: Orbitron, "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+ 
+h1 {
+    font-size: 1.9rem;
+    color: #fff;
+    text-shadow: 0 0 6px var(--pink), 0 0 18px var(--pink);
+}
+ 
+h2 {
+    color: var(--cyan);
+    text-shadow: 0 0 8px rgba(5, 217, 232, 0.8);
+}
+ 
+h3 {
+    color: var(--violet);
+    font-size: 1.05rem;
+}
+ 
+h4 {
+    color: var(--sun-1);
+    font-size: 0.95rem;
+}
+ 
+/* Меню */
+nav {
+    border-color: var(--pink);
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.5), inset 0 0 18px rgba(255, 42, 109, 0.08);
+}
+ 
+nav a {
+    display: inline-block;
+    margin: 6px 8px;
+    padding: 6px 14px;
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    border: 2px solid var(--pink);
+    border-radius: 4px;
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+}
+ 
+nav a:hover,
+nav a:focus {
+    background: var(--pink);
+    color: #fff;
+    box-shadow: 0 0 14px var(--pink);
+}
+ 
+/* Окантовка секций */
+#about    { border-color: var(--cyan); }
+#services { border-color: var(--violet); box-shadow: 0 0 12px rgba(185, 103, 255, 0.5), inset 0 0 18px rgba(185, 103, 255, 0.08); }
+#works    { border-color: var(--sun-1);  box-shadow: 0 0 12px rgba(255, 209, 102, 0.45), inset 0 0 18px rgba(255, 209, 102, 0.07); }
+#video    { border-color: var(--pink);   box-shadow: 0 0 12px rgba(255, 42, 109, 0.5), inset 0 0 18px rgba(255, 42, 109, 0.08); }
+ 
+/* Текст, ссылки, картинки */
+a {
+    color: var(--cyan);
+}
+ 
+a:hover {
+    color: var(--pink);
+}
+ 
+img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid var(--pink);
+    border-radius: 4px;
+    box-shadow: 0 0 16px rgba(255, 42, 109, 0.6);
+}
+ 
+blockquote {
+    max-width: 520px;
+    margin: 16px auto;
+    padding: 4px 18px;
+    border-left: 4px solid var(--pink);
+    background: rgba(255, 42, 109, 0.08);
+    font-style: italic;
+}
+ 
+/* Списки */
+#skills,
+#works-list {
+    padding: 0;
+}
+ 
+#skills li,
+#works-list li {
+    list-style: none;
+    margin: 6px 0;
+}
+ 
+#skills li::before {
+    content: "> ";
+    color: var(--pink);
+}
+ 
+ol {
+    padding: 0;
+    counter-reset: step;
+}
+ 
+ol li {
+    list-style: none;
+    margin: 6px 0;
+}
+ 
+ol li::before {
+    counter-increment: step;
+    content: "0" counter(step) " // ";
+    color: var(--pink);
+}
+ 
+/* Видео */
+iframe {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 3px solid var(--cyan);
+    border-radius: 4px;
+    box-shadow: 0 0 16px rgba(5, 217, 232, 0.6);
+}
+ 
+/* Подвал */
+footer {
+    border-color: var(--violet);
+    box-shadow: 0 0 12px rgba(185, 103, 255, 0.5), inset 0 0 18px rgba(185, 103, 255, 0.08);
+}
+ 
+small {
+    color: #a99bc7;
+}
+ 
+/* Мобильные */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+        padding: 16px 10px 100px;
+    }
+ 
+    h1 {
+        font-size: 1.4rem;
+    }
+ 
+    body::before {
+        width: 180px;
+        height: 180px;
+        margin-left: -90px;
+    }
+}
