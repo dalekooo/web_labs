@@ -74,6 +74,7 @@ footer {
     margin: 30px auto;
     padding: 20px;
     text-align: center;
+    overflow-wrap: anywhere;
     background: var(--panel);
     border: 2px solid var(--cyan);
     border-radius: 6px;
@@ -108,6 +109,30 @@ h4 {
     font-size: 0.95rem;
 }
  
+/* Лого */
+.logo {
+    max-width: 900px;
+    margin: 10px auto 0;
+    text-align: center;
+    font-family: Orbitron, "Courier New", monospace;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text);
+    text-shadow: 0 0 8px rgba(185, 103, 255, 0.8);
+}
+ 
+.logo span {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 4px 10px;
+    color: #fff;
+    border: 2px solid var(--pink);
+    border-radius: 4px;
+    text-shadow: 0 0 6px var(--pink), 0 0 14px var(--pink);
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.6), inset 0 0 8px rgba(255, 42, 109, 0.25);
+}
+
 /* Меню */
 nav {
     border-color: var(--pink);
@@ -183,7 +208,82 @@ blockquote {
     content: "> ";
     color: var(--pink);
 }
+
+/* Сетка карточек «Мои работы» */
+#works-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 20px 0 0;
+    padding: 0;
+}
  
+#works-list li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 2px solid var(--sun-1);
+    border-radius: 4px;
+    background: rgba(255, 209, 102, 0.06);
+    transition: box-shadow 0.2s, background 0.2s;
+}
+ 
+/* Ссылка растягивается на всю карточку, а у карточек без ссылки отступы дают сами li */
+#works-list li > a,
+#works-list li.current,
+#works-list li.soon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 8px;
+    min-height: 90px;
+    justify-content: center;
+}
+ 
+#works-list li > a {
+    padding: 12px 8px;
+    color: var(--text);
+    text-decoration: none;
+}
+ 
+#works-list li:hover {
+    background: rgba(255, 209, 102, 0.15);
+    box-shadow: 0 0 14px rgba(255, 209, 102, 0.55);
+}
+ 
+#works-list .num {
+    font-family: Orbitron, "Courier New", monospace;
+    font-size: 1.4rem;
+    color: var(--sun-1);
+    text-shadow: 0 0 8px rgba(255, 209, 102, 0.7);
+}
+ 
+#works-list .title {
+    font-size: 0.9rem;
+}
+ 
+#works-list .note {
+    font-size: 0.75rem;
+    color: var(--pink);
+}
+ 
+/* Текущая страница */
+#works-list li.current {
+    border-color: var(--pink);
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.5);
+}
+ 
+/* Работы, которых ещё нет */
+#works-list li.soon {
+    border-style: dashed;
+    opacity: 0.45;
+}
+ 
+#works-list li.soon:hover {
+    background: rgba(255, 209, 102, 0.06);
+    box-shadow: none;
+}
+
 ol {
     padding: 0;
     counter-reset: step;
