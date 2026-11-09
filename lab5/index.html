@@ -4,58 +4,74 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Список дел">
-        <link rel="stylesheet" href="todo_styles.css">
         <link rel="stylesheet" href="../visitka-style.css">
-        <link rel="icon" href="../favicon-16x16.png" type="image/x-icon">
+        <link rel="stylesheet" href="todo_styles.css">
+        <link rel="icon" href="../favicon-16x16.png" type="image/png">
         <title>TODO-list</title>
     </head>
     <body>
         <header id="top">
             <p class="logo"><span>daleko</span></p>
             <nav>
-                <a href="../index.html">< на визитку</a>
+                <a href="../index.html">&lt; на визитку</a>
             </nav>
         </header>
         <main class="todo">
             <h1>Список дел</h1>
 
-            <div class="todo-form">
-                <input id="task-input" type="text" placeholder="Что нужно сделать?">
-                <button id="add-btn">Добавить</button>
-            </div>
+            <form id="task-form" class="todo-form">
+                <input id="task-input" type="text" placeholder="Что нужно сделать?" aria-label="Новая задача" maxlength="100" autocomplete="off">
+                <button type="submit">Добавить</button>
+            </form>
 
-            <ul id="task-list">
-            </ul>
+            <ul id="task-list"></ul>
         </main>
         
-        <script>
-            const input = document.getElementById("task-input");
-            const addBtn = document.getElementById("add-btn");
-            const list = document.getElementById("task-list");
-            
-            function addTask() {
-                const taskText = input.value;
-
-                if (taskText.trim() === "") {
-                    return;
-                }
-
-                const li = document.createElement("li");
-                li.textContent = taskText;
-                list.appendChild(li);
-
-                input.value = "";
-                input.focus();
-            }
-            input.addEventListener("keydown", (event) => {
-                if (event.key === "Enter") {
-                    addTask();
-                }
-            });
-            addBtn.addEventListener("click", addTask);
-        </script>
+        
         <footer id="contacts">
             <p><small>&copy; 2026 Дарья Лещенко. Лабораторная работа №5.</small></p>
         </footer>
+        <script>
+            const form = document.querySelector("#task-form");
+            const input = document.querySelector("#task-input");
+            const list = document.querySelector("#task-list");
+            
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const taskText = input.value.trim();
+                if (taskText === "") {
+                    return;
+                }
+                
+                const li = document.createElement("li");
+
+                const check = document.createElement("input");
+                check.type = "checkbox";
+                check.setAttribute("aria-label", "Выполнено: " + taskText);
+
+                const text = document.createElement("span");
+                text.textContent = taskText;
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.type = "button";
+                deleteBtn.textContent = "Удалить";
+                deleteBtn.setAttribute("aria-label", "Удалить задачу: " + taskText);
+
+                check.addEventListener("change", () => {
+                li.classList.toggle("done", check.checked);
+                });
+
+                deleteBtn.addEventListener("click", () => {
+                    li.remove();
+                });
+
+                li.append(check, text, deleteBtn);
+                list.append(li);
+
+                form.reset();
+                input.focus();
+            });
+        </script>
     </body>
 </html>

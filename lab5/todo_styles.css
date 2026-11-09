@@ -1,97 +1,155 @@
-* {
-    box-sizing: border-box;
+/* Карточка со списком */
+main.todo {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    overflow-wrap: anywhere;
+    background: var(--panel);
+    border: 2px solid var(--cyan);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(5, 217, 232, 0.45), inset 0 0 18px rgba(5, 217, 232, 0.08);
 }
 
-body {
-    margin: 0;
-    padding: 40px 16px;
-    font-family: Arial, sans-serif;
-    background-color: antiquewhite;
-}
-
-.todo {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 24px;
-    background-color: rgb(147, 199, 176);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgb(61, 60, 60);
-}
-
-h1 {
+.todo h1 {
     margin-top: 0;
     text-align: center;
-    color: rgb(0, 0, 0);
 }
 
+/* Форма добавления */
 .todo-form {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-#task-input {
+.todo-form input {
     flex: 1;
+    min-width: 0;
     padding: 10px 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: rgba(18, 6, 43, 0.9);
+    border: 2px solid var(--cyan);
+    border-radius: 4px;
+    color-scheme: dark;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-#task-input:focus {
+.todo-form input::placeholder {
+    color: #8f80ad;
+    opacity: 1;
+}
+
+.todo-form input:focus {
     outline: none;
-    border-color: #4f7cff;
+    border-color: var(--pink);
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.7);
 }
 
-#add-btn {
-    padding: 10px 16px;
-    font-size: 16px;
-    color: white;
-    background-color: #4f7cff;
-    border: none;
-    border-radius: 30px;
+.todo-form button {
+    padding: 10px 18px;
+    font-family: Orbitron, "Courier New", monospace;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    background: rgba(255, 42, 109, 0.15);
+    border: 2px solid var(--pink);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
-#add-btn:hover {
-    background-color: #3a63d8;
+.todo-form button:hover {
+    background: var(--pink);
+    box-shadow: 0 0 20px var(--pink);
 }
 
-#add-btn:active { 
-    background: #2a4fb0; 
+.todo-form button:active {
+    transform: translateY(2px);
 }
 
+/* Список задач */
 #task-list {
-    border: 2px solid rgb(61, 60, 60);
-    border-radius: 20px;
-    padding: 10px;
-    background-color: #d3c2d5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#task-list:empty::before {
+    content: "Пока пусто. Добавьте первую задачу!";
+    display: block;
+    text-align: center;
+    color: #a99bc7;
 }
 
 #task-list li {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 18px;
-    list-style: inside;
-    border-bottom: 1px solid rgb(97, 97, 97);
-    margin: 5px;
+    gap: 12px;
+    padding: 10px 12px;
+    background: rgba(185, 103, 255, 0.08);
+    border: 2px solid var(--violet);
+    border-radius: 4px;
+    transition: box-shadow 0.2s, background 0.2s;
 }
 
-#task-list li.done span {
-    text-decoration: line-through;
-    color: #777;
+#task-list li:hover {
+    background: rgba(185, 103, 255, 0.16);
+    box-shadow: 0 0 12px rgba(185, 103, 255, 0.5);
 }
 
-.delete-btn {
-    background-color: none;
-    border: none;
-    color: #a33;
-    font-size: 18px;
+#task-list input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: var(--pink);
     cursor: pointer;
 }
 
-.delete-btn:hover {
-    color: red;
+#task-list span {
+    flex: 1;
+    text-align: left;
+}
+
+#task-list button {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: #ff8a8a;
+    background: transparent;
+    border: 2px solid #ff5252;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+#task-list button:hover {
+    color: #fff;
+    background: #ff5252;
+    box-shadow: 0 0 12px rgba(255, 82, 82, 0.7);
+}
+
+/* Выполненная задача */
+#task-list li.done span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+#task-list li.done {
+    border-color: #39ff88;
+}
+
+/* Узкие экраны */
+@media (max-width: 480px) {
+    .todo-form {
+        flex-direction: column;
+    }
 }
