@@ -1,0 +1,170 @@
+/* Форма, общий вид */
+form {
+    max-width: 600px;
+    margin: 20px auto 0;
+    text-align: left;
+}
+
+/* Группы полей */
+fieldset {
+    min-width: 0;
+    margin: 0 0 24px;
+    padding: 16px 18px 6px;
+    border: 2px solid var(--violet);
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(185, 103, 255, 0.4);
+}
+
+legend {
+    padding: 0 10px;
+    font-family: Orbitron, "Courier New", monospace;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px rgba(5, 217, 232, 0.8);
+}
+
+fieldset p {
+    margin: 0 0 16px;
+}
+
+/* Подписи и подсказки */
+label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: #a99bc7;
+}
+
+/* Поля ввода */
+:where(input:not([type="radio"]):not([type="checkbox"]), textarea) {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: rgba(18, 6, 43, 0.9);
+    border: 2px solid var(--cyan);
+    border-radius: 4px;
+    color-scheme: dark;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #8f80ad;
+    opacity: 1;
+}
+
+input:hover,
+textarea:hover {
+    border-color: var(--violet);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--pink);
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.7);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Переключатели и флажки */
+input[type="radio"],
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+    accent-color: var(--pink);
+    cursor: pointer;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    display: inline;
+    margin: 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type="radio"] + label:hover,
+input[type="checkbox"] + label:hover {
+    color: var(--cyan);
+}
+
+input[type="radio"]:focus-visible,
+input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+/* Кнопка */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    font-family: Orbitron, "Courier New", monospace;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    background: rgba(255, 42, 109, 0.15);
+    border: 2px solid var(--pink);
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(255, 42, 109, 0.6);
+    text-shadow: 0 0 8px var(--pink);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+    background: var(--pink);
+    box-shadow: 0 0 22px var(--pink);
+}
+
+button[type="submit"]:active {
+    transform: translateY(2px);
+}
+
+button[type="submit"]:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+/* Подсветка ошибок и верных полей */
+input:user-invalid,
+textarea:user-invalid {
+    border-color: #ff5252;
+    box-shadow: 0 0 10px rgba(255, 82, 82, 0.6);
+}
+
+input:user-invalid:focus,
+textarea:user-invalid:focus {
+    box-shadow: 0 0 14px rgba(255, 82, 82, 0.9);
+}
+
+input:user-invalid + small,
+textarea:user-invalid + small {
+    color: #ff8a8a;
+}
+
+input[type="checkbox"]:user-invalid + label {
+    color: #ff8a8a;
+}
+
+input:user-valid:not([type="radio"]):not([type="checkbox"]),
+textarea:user-valid {
+    border-color: #39ff88;
+}

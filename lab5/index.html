@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Список дел">
+        <link rel="stylesheet" href="todo_styles.css">
+        <link rel="stylesheet" href="../visitka-style.css">
+        <link rel="icon" href="../favicon-16x16.png" type="image/x-icon">
+        <title>TODO-list</title>
+    </head>
+    <body>
+        <header id="top">
+            <p class="logo"><span>daleko</span></p>
+            <nav>
+                <a href="../index.html">< на визитку</a>
+            </nav>
+        </header>
+        <main class="todo">
+            <h1>Список дел</h1>
+
+            <div class="todo-form">
+                <input id="task-input" type="text" placeholder="Что нужно сделать?">
+                <button id="add-btn">Добавить</button>
+            </div>
+
+            <ul id="task-list">
+            </ul>
+        </main>
+        
+        <script>
+            const input = document.getElementById("task-input");
+            const addBtn = document.getElementById("add-btn");
+            const list = document.getElementById("task-list");
+            
+            function addTask() {
+                const taskText = input.value;
+
+                if (taskText.trim() === "") {
+                    return;
+                }
+
+                const li = document.createElement("li");
+                li.textContent = taskText;
+                list.appendChild(li);
+
+                input.value = "";
+                input.focus();
+            }
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    addTask();
+                }
+            });
+            addBtn.addEventListener("click", addTask);
+        </script>
+        <footer id="contacts">
+            <p><small>&copy; 2026 Дарья Лещенко. Лабораторная работа №5.</small></p>
+        </footer>
+    </body>
+</html>

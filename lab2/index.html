@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Запись в аркадный клуб">
+        <link rel="stylesheet" href="../visitka-style.css">
+        <link rel="stylesheet" href="form-style.css">
+        <link rel="icon" href="../favicon-16x16.png" type="image/x-icon">
+        <title>Запись в аркадный клуб</title>
+    </head>
+    <body>
+        <header id="top">
+            <p class="logo"><span>daleko</span></p>
+            <nav>
+                <a href="../index.html">&lt; на визитку</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>Запись в аркадный клуб</h1>
+                <p>Заполните форму, и мы забронируем для вас автомат.</p>
+
+                <form action="#" method="get">
+                    <fieldset>
+                        <legend>Данные игрока</legend>
+                        <p>
+                            <label for="player-name">Имя</label>
+                            <input type="text" id="player-name" name="player-name" placeholder="Например, ЗвёздныйЛорд7000" required minlength="2" maxlength="40" aria-describedby="name-hint">
+                            <small id="name-hint">От 2 до 40 символов (любых)</small>
+                        </p>
+                        <p>
+                            <label for="player-email">Почта</label>
+                            <input type="email" id="player-email" name="player-email" placeholder="name@example.com" required aria-describedby="email-hint">
+                            <small id="email-hint">Пришлём подтверждение записи на этот адрес</small>
+                        </p>
+                        <p>
+                            <label for="player-phone">Телефон</label>
+                            <input type="tel" id="player-phone" name="player-phone" placeholder="88005553535" required pattern="(\+7|8)\d{10}" title="Формат: 88005553535 или +79001234567" aria-describedby="phone-hint">
+                            <small id="phone-hint">Формат: 88005553535 или +79001234567</small>
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Время визита</legend>
+                        <p>
+                            <label for="visit-date">Дата визита</label>
+                            <input type="date" id="visit-date" name="visit-date" min="2026-11-09" max="2026-12-31" required aria-describedby="date-hint">
+                            <small id="date-hint">Запись открыта до 31 декабря 2026</small>
+                        </p>
+                        <p>
+                            <label for="players-count">Сколько вас будет</label>
+                            <input type="number" id="players-count" name="players-count" min="1" max="6" step="1" value="1" required aria-describedby="players-hint">
+                            <small id="players-hint">От 1 до 6 человек</small>
+                        </p>
+                        <p>
+                            <label for="play-hours">Сколько часов играем</label>
+                            <input type="number" id="play-hours" name="play-hours" min="1" max="4" step="0.5" value="1" required aria-describedby="hours-hint">
+                            <small id="hours-hint">От 1 до 4 часов, шаг полчаса</small>
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Формат визита</legend>
+                        <p>
+                            <input type="radio" id="format-free" name="format" value="free" checked required>
+                            <label for="format-free">Свободная игра</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="format-tournament" name="format" value="tournament">
+                            <label for="format-tournament">Турнир</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="format-party" name="format" value="party">
+                            <label for="format-party">День рождения</label>
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Во что будем играть</legend>
+                        <p>
+                            <label for="favorite-game">Любимая игра</label>
+                            <input type="text" id="favorite-game" name="favorite-game" list="games" placeholder="Начните вводить название">
+
+                            <datalist id="games">
+                                <option value="Pac-Man"></option>
+                                <option value="Space Invaders"></option>
+                                <option value="Galada"></option>
+                                <option value="Donkey Kong"></option>
+                                <option value="Street Fighter II"></option>
+                                <option value="Mortal Kombat"></option>
+                                <option value="Tekken"></option>
+                                <option value="Dance Dance Revolution"></option>
+                                <option value="Time Crisis"></option>
+                                <option value="Pinball"></option>
+                            </datalist>
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Дополнительно</legend>
+                        <p>
+                            <input type="checkbox" id="extra-tokens" name="extras" value="tokens">
+                            <label for="extra-tokens">Стартовый набор жетонов</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="extra-snacks" name="extras" value="snacks">
+                            <label for="extra-snacks">Пицца и лимонад</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="extra-help" name="extras" value="help">
+                            <label for="extra-help">Помощь администратора</label>
+                        </p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Пожелания и согласие</legend>
+                        <p>
+                            <label for="comment">Комментарий</label>
+                            <textarea id="comment" name="comment" rows="4" cols="40" maxlength="300" placeholder="Например: хотим играть рядом с Pac-Man" aria-describedby="comment-hint"></textarea>
+                            <small id="comment-hint">Необязательно, до 300 символов</small>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="agree" name="agree" value="yes" required>
+                            <label for="agree">Даю согласие на обработку персональных данных</label>
+                        </p>
+                    </fieldset>
+                    <button type="submit">Записаться</button>
+                </form>
+            </section>
+        </main>
+        <footer id="contacts">
+            <p><small>&copy; 2026 Дарья Лещенко. Лабораторная работа №2.</small></p>
+        </footer>
+    </body>
+</html>
