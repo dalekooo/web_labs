@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800&display=swap");
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Exo 2", "Courier New", monospace;
+}
+
+main {
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+}
+ /* Все панели одной ширины */
+header nav,
+footer {
+    width: 100%;
+    max-width: 360px;
+}
+
+.card {
+    position: relative;
+    padding: 28px 24px;
+    text-align: center;
+    background: var(--panel);
+    border: 2px solid var(--cyan);
+    border-radius: 12px;
+    box-shadow: 0 0 16px rgba(5, 217, 232, 0.45);
+}
+
+.card-header {
+    margin-bottom: 20px;
+}
+
+/* Аватар и значок статуса */
+.avatar-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar {
+    display: block;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid var(--pink);
+    border-radius: 50%;
+    box-shadow: 0 0 16px rgba(255, 42, 109, 0.7);
+}
+
+.status {
+    position: absolute;
+    right: -14px;
+    bottom: 6px;
+    padding: 2px 10px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0b0b1a;
+    background: #39ff88;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(57, 255, 136, 0.8);
+}
+
+/* Типографика */
+.name {
+    margin: 16px 0 4px;
+    font-family: inherit;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: none;
+}
+
+.role {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--cyan);
+}
+
+.bio {
+    margin: 0 0 20px;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Характеристики */
+.stats {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 20px;
+}
+
+.stat {
+    flex: 1;
+    padding: 10px 6px;
+    background: rgba(185, 103, 255, 0.1);
+    border: 2px solid var(--violet);
+    border-radius: 8px;
+}
+
+.stat dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #a99bc7;
+}
+
+.stat dd {
+    margin: 4px 0 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--sun-1);
+}
+
+/* Теги */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+}
+
+.tags li {
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--pink);
+    border-radius: 20px;
+}
+
+/* Кнопки */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 42, 109, 0.2);
+    border: 2px solid var(--pink);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-outline {
+    background: transparent;
+    border-color: var(--cyan);
+}
+
+/* Декор, псевдоэлементы */
+/* Уголки на карточке */
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+}
+
+.card::before {
+    top: 10px;
+    left: 10px;
+    border-top: 3px solid var(--pink);
+    border-left: 3px solid var(--pink);
+}
+
+.card::after {
+    right: 10px;
+    bottom: 10px;
+    border-right: 3px solid var(--pink);
+    border-bottom: 3px solid var(--pink);
+}
+
+/* Светящаяся черта под именем */
+.name::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--pink);
+}
+
+/* Точка в значке статуса */
+.status::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background: #0b0b1a;
+    border-radius: 50%;
+}
+
+/* Состояния и эффекты */
+/* Плавность для всего, что будет меняться */
+.card,
+.stat,
+.tags li,
+.btn {
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.card::before,
+.card::after {
+    transition: width 0.25s, height 0.25s;
+}
+
+/* Карточка */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 28px rgba(5, 217, 232, 0.8), 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover::before,
+.card:hover::after {
+    width: 44px;
+    height: 44px;
+}
+
+/* Характеристики */
+.stat:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px rgba(5, 217, 232, 0.6);
+}
+
+/* Теги */
+.tags li:hover {
+    color: #fff;
+    background: var(--pink);
+    box-shadow: 0 0 10px rgba(255, 42, 109, 0.8);
+}
+
+/* Кнопки */
+.btn:hover {
+    color: #fff;
+    background: var(--pink);
+    box-shadow: 0 0 18px var(--pink);
+}
+
+.btn-outline:hover {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    color: #0b0b1a;
+    box-shadow: 0 0 18px var(--cyan);
+}
+
+.btn:focus {
+    outline: 2px solid var(--sun-1);
+    outline-offset: 3px;
+}
+
+.btn:active {
+    transform: translateY(2px) scale(0.97);
+    box-shadow: 0 0 6px var(--pink);
+}
