@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ретро-магазин игровых аксессуаров">
+        <link rel="stylesheet" href="store.css">
+        <link rel="icon" href="../favicon-16x16.png" type="image/png">
+        <title>Retro Store - каталог</title>
+    </head>
+    <body>
+        <header class="site-header">
+            <p class="logo"><span>daleko</span> Retro Store</p>
+            <nav class="main-nav">
+                <a href="#catalog">Каталог</a>
+                <a href="#filters">Фильтры</a>
+                <a href="../index.html">&lt; на визитку</a>
+            </nav>
+        </header>
+        <aside class="sidebar" id="filters">
+            <h2>Фильтры</h2>
+            <form class="filters" action="#" method="get">
+                <fieldset>
+                    <legend>Категория</legend>
+
+                    <p><input type="checkbox" id="cat-controllers" name="category" value="controllers"><label for="cat-controllers">Контроллеры</label></p>
+                    <p><input type="checkbox" id="cat-games" name="category" value="games"><label for="cat-games">Игры</label></p>
+                    <p><input type="checkbox" id="cat-consoles" name="category" value="consoles"><label for="cat-consoles">Консоли</label></p>
+                    <p><input type="checkbox" id="cat-merch" name="category" value="merch"><label for="cat-merch">Мерч</label></p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Цена, ₽</legend>
+
+                    <p>
+                        <label for="price-min">От</label>
+                        <input type="number" id="price-min" name="price-min" min="0" step="100" placeholder="0">
+                    </p>
+                    <p>
+                        <label for="price-max">До</label>
+                        <input type="number" id="price-max" name="price-max" min="0" step="100" placeholder="10000">
+                    </p>
+                </fieldset>
+
+                <p><input type="checkbox" id="in-stock" name="in-stock" value="1"><label for="in-stock">Только в наличии</label></p>
+
+                <button type="submit" class="btn">Применить</button>
+            </form>
+        </aside>
+        <main class="catalog" id="catalog">
+            <h1>Каталог</h1>
+            <div class="products">
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">🕹️</div>
+                    <h2>Джойстик «Pixel»</h2>
+                    <p class="product-desc">Аркадный стик с микропереключателями.</p>
+                    <p class="price">3490 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">💾</div>
+                    <h2>Картридж «Space Run»</h2>
+                    <p class="product-desc">Космический раннер в 8-битном стиле.</p>
+                    <p class="price">1 290 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">🎮</div>
+                    <h2>Мини-консоль «Retro Box»</h2>
+                    <p class="product-desc">150 встроенных игр, подключение по HDMI.</p>
+                    <p class="price">7 990 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">🎛️</div>
+                    <h2>Геймпад «Neon Pad»</h2>
+                    <p class="product-desc">Беспроводной геймпад с подсветкой.</p>
+                    <p class="price">2 590 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">🪙</div>
+                    <h2>Набор жетонов</h2>
+                    <p class="product-desc">50 жетонов для аркадных автоматов.</p>
+                    <p class="price">590 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">🎧</div>
+                    <h2>Наушники «Synth»</h2>
+                    <p class="product-desc">Закрытые наушники с глубокими басами.</p>
+                    <p class="price">4 190 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">👕</div>
+                    <h2>Футболка «Sunset»</h2>
+                    <p class="product-desc">Хлопок, принт с закатом и сеткой.</p>
+                    <p class="price">1 890 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+                <article class="product">
+                    <div class="product-image" aria-hidden="true">🖼️</div>
+                    <h2>Постер «Grid»</h2>
+                    <p class="product-desc">Постер А2 в стиле ретровейв.</p>
+                    <p class="price">790 ₽</p>
+                    <button type="button" class="btn">В корзину</button>
+                </article>
+            </div>
+        </main>
+        <footer class="site-footer">
+            <p><small>&copy; 2026 Дарья Лещенко. Лабораторная работа №4.</small></p>
+        </footer>
+    </body>
+</html>
